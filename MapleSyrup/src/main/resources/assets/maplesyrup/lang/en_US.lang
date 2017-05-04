@@ -1,0 +1,19 @@
+﻿itemGroup.maplesyrup=Maple Syrup Mod
+
+tile.maple_log.name=Sugar Maple Log
+tile.maple_sapling.name=Sugar Maple Sapling
+tile.maple_leaves.name=Sugar Maple Leaves
+tile.tree_tap.name=Tree Tap
+tile.evaporator.name=Evaporator
+tile.large_evaporator.name=Evaporator
+
+item.item_hydrometer.name=Hydrometer
+item.bottle_maplesyrup.name=Maple Syrup Bottle
+
+tile.maple_syrup_fluid.name=Maple Syrup
+tile.maple_sap_fluid.name=Maple Sap
+
+
+
+fluid.maple_syrup_fluid=Maple Syrup
+fluid.maple_sap_fluid=Maple Sap

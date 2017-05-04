@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "maple_syrup_fluid": {
+            "model": "forge:fluid",
+            "custom": { "fluid": "maple_syrup_fluid" }
+        },
+        "maple_sap_fluid": {
+            "model": "forge:fluid",
+            "custom": { "fluid": "maple_sap_fluid" }
+        }
+    }
+}

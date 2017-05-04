@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+    "down": "maplesyrup:blocks/evaporator_side",
+  	"up": "maplesyrup:blocks/evaporator_side",
+   	"north": "maplesyrup:blocks/evaporator_front",
+   	"south": "maplesyrup:blocks/evaporator_side",
+   	"west": "maplesyrup:blocks/evaporator_side",
+   	"east": "maplesyrup:blocks/evaporator_side",
+   	"particle": "maplesyrup:blocks/evaporator_side"
+    }
+}

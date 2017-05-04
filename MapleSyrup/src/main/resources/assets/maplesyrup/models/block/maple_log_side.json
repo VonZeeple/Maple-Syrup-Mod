@@ -1,0 +1,7 @@
+{
+    "parent": "block/column_side",
+    "textures": {
+        "end": "maplesyrup:blocks/log_maple_top",
+        "side": "maplesyrup:blocks/log_maple"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "maplesyrup:large_evaporator.obj",
+        "custom": {"flip-v": true}
+    },
+    "variants": {
+   			"normal": [{
+    		}],
+    		"facing":{
+  				"south":{transform:{"rotation": {"y":180}}},
+        		"north":{transform:{"rotation": {"y":0}}},
+        		"east":{transform:{"rotation":  {"y":270}}},
+       		"west":{transform:{"rotation":  {"y":90}}}
+        	},
+        	"inventory": {
+				"transform": "forge:default-block"
+        	},
+        	"_0ismultiblockslave":{
+				"false":{},
+				"true":{ "model": "builtin/generated"
+					}
+		}
+        	
+        }
+}
