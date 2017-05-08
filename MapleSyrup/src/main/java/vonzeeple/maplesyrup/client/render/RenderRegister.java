@@ -34,6 +34,7 @@ public class RenderRegister {
 		
 		ModelLoader.setCustomModelResourceLocation(Content.itemTreeTap, 0, new ModelResourceLocation(MapleSyrup.MODID+":tree_tap", "inventory"));
 		ModelLoader.setCustomModelResourceLocation(Content.itemEvaporator, 0, new ModelResourceLocation(MapleSyrup.MODID+":evaporator", "inventory"));
+		ModelLoader.setCustomModelResourceLocation(Content.itemLargeEvaporator, 0, new ModelResourceLocation(MapleSyrup.MODID+":large_evaporator", "inventory"));
 		
         // use a custom state mapper which will ignore the LEVEL property
         ModelLoader.setCustomStateMapper(Content.blockFluidMapleSyrup, new StateMapperBase()

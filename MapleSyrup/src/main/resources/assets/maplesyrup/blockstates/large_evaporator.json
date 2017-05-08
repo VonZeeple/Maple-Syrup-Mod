@@ -20,7 +20,10 @@
 				"false":{},
 				"true":{ "model": "builtin/generated"
 					}
-		}
+		},
+        	"inventory": [{
+				"transform": "forge:default-block"
+        	}]
         	
         }
 }

@@ -2,14 +2,20 @@ package vonzeeple.maplesyrup.common;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import vonzeeple.maplesyrup.MapleSyrup;
 import vonzeeple.maplesyrup.api.EvaporationProcessesHandler;
 import vonzeeple.maplesyrup.api.TappableBlocksHandler;
@@ -85,7 +91,7 @@ public class Content {
         
         //Item registration
 		GameRegistry.register(itemHydrometer= new ItemHydrometer("item_hydrometer"));
-		GameRegistry.register(itemMapleSyrupBottle= new ItemMapleSyrupBottle("bottle_maplesyrup"));
+		GameRegistry.register(itemMapleSyrupBottle= new ItemMapleSyrupBottle("bottle_maplesyrup").setContainerItem(Items.GLASS_BOTTLE));
 		
 		//Fluids registration
 		
@@ -102,19 +108,27 @@ public class Content {
 	    FluidRegistry.addBucketForFluid(fluidMapleSap);
 	    
 
-	    
-	    
-	    
 	    //Tile entities
 	    
 	    GameRegistry.registerTileEntity(TileEntityTreeTap.class, "tileTreeTap");
 	    GameRegistry.registerTileEntity(TileEntityEvaporator.class, "tileEvaporator");
+	    GameRegistry.registerTileEntity(TileEntityEvaporator.class, "tileLargeEvaporator");
+	    
 	    //Register tappable blocks
 	    TappableBlocksHandler.registerBlock(mapleLog, fluidMapleSap);
 	    TappableBlocksHandler.registerBlock(Blocks.LOG, FluidRegistry.WATER);
 	    
 	    //Register evaporable fluids
 	    EvaporationProcessesHandler.registerProcess(fluidMapleSap, fluidMapleSyrup, 20);
+	    
+	    //Recipes
+	    //GameRegistry.addShapelessRecipe(new ItemStack(Content.itemMapleSyrupBottle,4), new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE), new FluidStack(fluidMapleSap, 1000));
+	    GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Content.itemMapleSyrupBottle,4), Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE, UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, fluidMapleSyrup)));
+	    
+	    
+	    
+	    
+	    
 	    //OreDictionnary
 	    //For compat with harvestcraft
 	    OreDictionary.registerOre("cropMaplesyrup",itemMapleSyrupBottle);
