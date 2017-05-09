@@ -3,35 +3,35 @@ package vonzeeple.maplesyrup.api;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import vonzeeple.maplesyrup.util.Logger;
 
 public class TappableBlocksHandler {
 
-	static final HashMap<String, String> tappableBlocks = new HashMap<String, String>();
+	static final HashMap<IBlockState, FluidStack> tappableBlocks = new HashMap<IBlockState, FluidStack>();
 
-	
-	public static void registerBlock(Block block, Fluid sap)
+	public static void registerBlock(IBlockState state, FluidStack sap)
 	{
-		if(block != null && sap != null )
-			tappableBlocks.put(block.getUnlocalizedName(), sap.getName());
-		Logger.info("Tappable block "+ block.getUnlocalizedName()+" with sap "+ sap.getName()+ " added");
+		if(state != null && sap != null )
+			tappableBlocks.put(state, sap);
+		Logger.info("Tappable block "+ state.getBlock().getUnlocalizedName()+" with sap "+ sap.getFluid().getName()+ " added");
 	}	
 
-	public static boolean isTappableBlock(Block block){
-		if(block != null)
-			return tappableBlocks.containsKey(block.getUnlocalizedName());
+	public static boolean isTappableBlock(IBlockState state){
+		if(state != null)
+			return tappableBlocks.containsKey(state);
 			return false;
 	}
 	
 
-	public static String getTappableSap(Block block)
+	public static FluidStack getTappableSap(IBlockState state)
 	{
-		if(block != null)
+		if(state != null)
 		{
-			String s = block.getUnlocalizedName();
-			if(tappableBlocks.containsKey(s))
-				return tappableBlocks.get(s);
+			if(tappableBlocks.containsKey(state))
+				return tappableBlocks.get(state);
 		}
 		return null;
 }

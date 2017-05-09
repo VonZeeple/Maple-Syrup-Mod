@@ -1,6 +1,8 @@
 package vonzeeple.maplesyrup.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockOldLog;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -62,6 +64,11 @@ public class Content {
     public static Fluid fluidMapleSap;
     public static Block blockFluidMapleSap;   
     public static Item itemFluidMapleSap;
+ 
+    public static Fluid fluidBirchSap;
+    public static Block blockFluidBirchSap;   
+    public static Item itemFluidBirchSap;
+    
     
     public static Item itemMapleSyrupBottle;
     
@@ -106,7 +113,11 @@ public class Content {
 	    GameRegistry.register(blockFluidMapleSap = new BlockMapleSapFluid(fluidMapleSap, "maple_sap_fluid") );
 	    GameRegistry.register(itemFluidMapleSap = new ItemBlock(blockFluidMapleSap).setRegistryName("maple_sap_fluid"));		
 	    FluidRegistry.addBucketForFluid(fluidMapleSap);
-	    
+	    //Birch Sap
+	    FluidRegistry.registerFluid(fluidBirchSap = new Fluid("birch_sap_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_flow")).setUnlocalizedName("birch_sap_fluid"));	    
+	    GameRegistry.register(blockFluidBirchSap = new BlockMapleSapFluid(fluidBirchSap, "birch_sap_fluid") );
+	    GameRegistry.register(itemFluidBirchSap = new ItemBlock(blockFluidBirchSap).setRegistryName("birch_sap_fluid"));		
+	    FluidRegistry.addBucketForFluid(fluidBirchSap);	    
 
 	    //Tile entities
 	    
@@ -115,24 +126,23 @@ public class Content {
 	    GameRegistry.registerTileEntity(TileEntityEvaporator.class, "tileLargeEvaporator");
 	    
 	    //Register tappable blocks
-	    TappableBlocksHandler.registerBlock(mapleLog, fluidMapleSap);
-	    TappableBlocksHandler.registerBlock(Blocks.LOG, FluidRegistry.WATER);
+	    TappableBlocksHandler.registerBlock(mapleLog.getDefaultState(), new FluidStack(fluidMapleSap,100));
+	    TappableBlocksHandler.registerBlock(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.BIRCH), new FluidStack(fluidBirchSap,100));
 	    
 	    //Register evaporable fluids
 	    EvaporationProcessesHandler.registerProcess(fluidMapleSap, fluidMapleSyrup, 20);
-	    
+	    EvaporationProcessesHandler.registerProcess(fluidBirchSap, fluidMapleSyrup, 40);
 	    //Recipes
-	    //GameRegistry.addShapelessRecipe(new ItemStack(Content.itemMapleSyrupBottle,4), new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE),new ItemStack(Items.GLASS_BOTTLE), new FluidStack(fluidMapleSap, 1000));
 	    GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Content.itemMapleSyrupBottle,4), Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE, UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, fluidMapleSyrup)));
 	    
-	    
-	    
-	    
-	    
+
 	    //OreDictionnary
+	    OreDictionary.registerOre("BottleSyrup",itemMapleSyrupBottle);
+	    OreDictionary.registerOre("LogWood",mapleLog);
+	    
 	    //For compat with harvestcraft
 	    OreDictionary.registerOre("cropMaplesyrup",itemMapleSyrupBottle);
-	    OreDictionary.registerOre("LogWood",mapleLog);
+	    
 	}
 
 	

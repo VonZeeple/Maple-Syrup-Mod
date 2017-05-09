@@ -51,7 +51,7 @@ public class TileEntityTreeTap extends TileFluidHandler implements ITickable{// 
 		
 			//Only server side
 			if(!this.getWorld().isRemote){
-			tank.fillInternal(new FluidStack(FluidRegistry.getFluid(this.checkTapping()), 111), true);
+			tank.fillInternal(this.checkTapping(), true);
 			this.markDirty();
 			}
 			
@@ -108,7 +108,7 @@ public class TileEntityTreeTap extends TileFluidHandler implements ITickable{// 
     
     }
     
-    public String checkTapping(){
+    public FluidStack checkTapping(){
     	IBlockState state = this.getWorld().getBlockState(pos);
 
  		BlockPos pos2;
@@ -128,8 +128,8 @@ public class TileEntityTreeTap extends TileFluidHandler implements ITickable{// 
             default:
             	pos2=pos.west();
         }
-        if (TappableBlocksHandler.isTappableBlock(this.getWorld().getBlockState(pos2).getBlock())){
-        	return TappableBlocksHandler.getTappableSap(this.getWorld().getBlockState(pos2).getBlock());
+        if (TappableBlocksHandler.isTappableBlock(this.getWorld().getBlockState(pos2))){
+        	return TappableBlocksHandler.getTappableSap(this.getWorld().getBlockState(pos2));
         }
         else{
         	return null;
