@@ -11,10 +11,12 @@ item.item_hydrometer.name=Hydrometer
 item.bottle_maplesyrup.name=Maple Syrup Bottle
 
 tile.maple_syrup_fluid.name=Maple Syrup
+tile.birch_syrup_fluid.name=Birch Syrup
 tile.maple_sap_fluid.name=Maple Sap
 tile.maple_birch_fluid.name=Birch Sap
 
 
 fluid.maple_syrup_fluid=Maple Syrup
+fluid.birch_syrup_fluid=Birch Syrup
 fluid.maple_sap_fluid=Maple Sap
 fluid.birch_sap_fluid=Birch Sap

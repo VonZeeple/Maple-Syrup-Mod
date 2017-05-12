@@ -61,6 +61,10 @@ public class Content {
     public static Block blockFluidMapleSyrup;   
     public static Item itemFluidMapleSyrup;
  
+    public static Fluid fluidBirchSyrup;
+    public static Block blockFluidBirchSyrup;   
+    public static Item itemFluidBirchSyrup;
+    
     public static Fluid fluidMapleSap;
     public static Block blockFluidMapleSap;   
     public static Item itemFluidMapleSap;
@@ -108,6 +112,12 @@ public class Content {
 	    GameRegistry.register(itemFluidMapleSyrup = new ItemBlock(blockFluidMapleSyrup).setRegistryName("maple_syrup_fluid"));		
 	    FluidRegistry.addBucketForFluid(fluidMapleSyrup);
 	    
+		//Birch syrup 
+	    FluidRegistry.registerFluid(fluidBirchSyrup = new Fluid("birch_syrup_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_flow")).setUnlocalizedName("maple_syrup_fluid"));	    
+	    GameRegistry.register(blockFluidBirchSyrup = new BlockMapleSyrupFluid(fluidBirchSyrup, "birch_syrup_fluid") );
+	    GameRegistry.register(itemFluidBirchSyrup = new ItemBlock(blockFluidBirchSyrup).setRegistryName("birch_syrup_fluid"));		
+	    FluidRegistry.addBucketForFluid(fluidBirchSyrup);
+	    
 	    //Maple Sap
 	    FluidRegistry.registerFluid(fluidMapleSap = new Fluid("maple_sap_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_flow")).setUnlocalizedName("maple_sap_fluid"));	    
 	    GameRegistry.register(blockFluidMapleSap = new BlockMapleSapFluid(fluidMapleSap, "maple_sap_fluid") );
@@ -131,7 +141,7 @@ public class Content {
 	    
 	    //Register evaporable fluids
 	    EvaporationProcessesHandler.registerProcess(fluidMapleSap, fluidMapleSyrup, 20);
-	    EvaporationProcessesHandler.registerProcess(fluidBirchSap, fluidMapleSyrup, 40);
+	    EvaporationProcessesHandler.registerProcess(fluidBirchSap, fluidBirchSyrup, 40);
 	    //Recipes
 	    GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Content.itemMapleSyrupBottle,4), Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE,Items.GLASS_BOTTLE, UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, fluidMapleSyrup)));
 	    
