@@ -17,7 +17,7 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 
-		Content.createBlocks();
+		Content.registerContent();
 		
 		//Config file generation
         File directory = event.getModConfigurationDirectory();

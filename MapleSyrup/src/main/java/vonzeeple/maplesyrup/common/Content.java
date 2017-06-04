@@ -73,12 +73,12 @@ public class Content {
     public static Block blockFluidBirchSap;   
     public static Item itemFluidBirchSap;
     
+    public static Fluid fluidHeveaSap;
+    public static Block blockFluidHeveaSap;   
     
     public static Item itemMapleSyrupBottle;
     
-	public static void createBlocks() {
-		
-		//WARNING never change the registry name!	
+	public static void registerContent() {
 		
 		//Blocks 
 		
@@ -109,26 +109,26 @@ public class Content {
 		//Maple syrup 
 	    FluidRegistry.registerFluid(fluidMapleSyrup = new Fluid("maple_syrup_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_flow")).setUnlocalizedName("maple_syrup_fluid"));	    
 	    GameRegistry.register(blockFluidMapleSyrup = new BlockMapleSyrupFluid(fluidMapleSyrup, "maple_syrup_fluid") );
-	    GameRegistry.register(itemFluidMapleSyrup = new ItemBlock(blockFluidMapleSyrup).setRegistryName("maple_syrup_fluid"));		
 	    FluidRegistry.addBucketForFluid(fluidMapleSyrup);
 	    
 		//Birch syrup 
 	    FluidRegistry.registerFluid(fluidBirchSyrup = new Fluid("birch_syrup_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesyrup_flow")).setUnlocalizedName("maple_syrup_fluid"));	    
 	    GameRegistry.register(blockFluidBirchSyrup = new BlockMapleSyrupFluid(fluidBirchSyrup, "birch_syrup_fluid") );
-	    GameRegistry.register(itemFluidBirchSyrup = new ItemBlock(blockFluidBirchSyrup).setRegistryName("birch_syrup_fluid"));		
 	    FluidRegistry.addBucketForFluid(fluidBirchSyrup);
 	    
 	    //Maple Sap
 	    FluidRegistry.registerFluid(fluidMapleSap = new Fluid("maple_sap_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_flow")).setUnlocalizedName("maple_sap_fluid"));	    
-	    GameRegistry.register(blockFluidMapleSap = new BlockMapleSapFluid(fluidMapleSap, "maple_sap_fluid") );
-	    GameRegistry.register(itemFluidMapleSap = new ItemBlock(blockFluidMapleSap).setRegistryName("maple_sap_fluid"));		
+	    GameRegistry.register(blockFluidMapleSap = new BlockMapleSapFluid(fluidMapleSap, "maple_sap_fluid") );	
 	    FluidRegistry.addBucketForFluid(fluidMapleSap);
 	    //Birch Sap
 	    FluidRegistry.registerFluid(fluidBirchSap = new Fluid("birch_sap_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/maplesap_flow")).setUnlocalizedName("birch_sap_fluid"));	    
 	    GameRegistry.register(blockFluidBirchSap = new BlockMapleSapFluid(fluidBirchSap, "birch_sap_fluid") );
-	    GameRegistry.register(itemFluidBirchSap = new ItemBlock(blockFluidBirchSap).setRegistryName("birch_sap_fluid"));		
 	    FluidRegistry.addBucketForFluid(fluidBirchSap);	    
-
+	    //Hevea Sap
+	    FluidRegistry.registerFluid(fluidHeveaSap = new Fluid("hevea_sap_fluid", new ResourceLocation(MapleSyrup.MODID+":blocks/heveasap_still") , new ResourceLocation(MapleSyrup.MODID+":blocks/heveasap_flow")).setUnlocalizedName("hevea_sap_fluid"));	    
+	    GameRegistry.register(blockFluidHeveaSap = new BlockMapleSapFluid(fluidHeveaSap, "hevea_sap_fluid") );
+	    FluidRegistry.addBucketForFluid(fluidHeveaSap);	  
+	    
 	    //Tile entities
 	    
 	    GameRegistry.registerTileEntity(TileEntityTreeTap.class, "tileTreeTap");
@@ -138,6 +138,8 @@ public class Content {
 	    //Register tappable blocks
 	    TappableBlocksHandler.registerBlock(mapleLog.getDefaultState(), new FluidStack(fluidMapleSap,100));
 	    TappableBlocksHandler.registerBlock(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.BIRCH), new FluidStack(fluidBirchSap,100));
+	    TappableBlocksHandler.registerBlock(Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE), new FluidStack(fluidHeveaSap,100));
+	    
 	    
 	    //Register evaporable fluids
 	    EvaporationProcessesHandler.registerProcess(fluidMapleSap, fluidMapleSyrup, 20);

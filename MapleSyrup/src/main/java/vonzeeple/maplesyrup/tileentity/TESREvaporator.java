@@ -2,7 +2,6 @@ package vonzeeple.maplesyrup.tileentity;
 
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.block.BlockHorizontal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -27,8 +26,8 @@ public class TESREvaporator extends TileEntitySpecialRenderer<TileEntityEvaporat
 	    
 		//New rendering, level in cauldron
 		
-	    float h=1f;
-	    float w=2f/16f;
+	    //float h=1f;
+	    //float w=2f/16f;
 	    float yoffset=4f/16f;
 	    
 		GlStateManager.enableTexture2D();

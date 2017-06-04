@@ -8,6 +8,7 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -28,6 +29,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vonzeeple.maplesyrup.MapleSyrup;
+import vonzeeple.maplesyrup.api.PropertiesHandler;
 import vonzeeple.maplesyrup.tileentity.TileEntityTreeTap;
 import vonzeeple.maplesyrup.util.Logger;
 
@@ -38,7 +40,7 @@ public class BlockTreeTap extends Block implements ITileEntityProvider {
 
 		
 	    public static final PropertyDirection FACING = BlockHorizontal.FACING;
-
+	    public static final PropertyBool LIQUIDRENDER =  PropertiesHandler.LIQUIDRENDER;
 	    
 	    protected static final AxisAlignedBB TAP_EAST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.25D, 0.5D, 0.75D, 0.75D);
 	    protected static final AxisAlignedBB TAP_WEST_AABB = new AxisAlignedBB(0.5D, 0.0D, 0.25D, 1.0D, 0.75D, 0.75D);
@@ -54,6 +56,7 @@ public class BlockTreeTap extends Block implements ITileEntityProvider {
 		setRegistryName(name);
 		this.setTickRandomly(true);
 		this.setHardness(0.2f);
+		this.setDefaultState(this.getDefaultState().withProperty(LIQUIDRENDER, false));
 
 	}
 
@@ -91,6 +94,7 @@ public class BlockTreeTap extends Block implements ITileEntityProvider {
                worldIn.getBlockState(pos.south()).isSideSolid(worldIn, pos.south(), EnumFacing.NORTH);
     }
     
+
     /**
      * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
      * IBlockstate
@@ -165,7 +169,7 @@ public class BlockTreeTap extends Block implements ITileEntityProvider {
     
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, new IProperty[] {FACING,LIQUIDRENDER});
     }
 	
     public boolean isOpaqueCube(IBlockState state)

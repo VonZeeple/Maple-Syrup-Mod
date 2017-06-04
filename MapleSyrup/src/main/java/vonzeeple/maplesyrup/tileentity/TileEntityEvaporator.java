@@ -5,6 +5,7 @@ import java.util.Random;
 import jline.internal.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -20,6 +21,8 @@ import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import vonzeeple.maplesyrup.api.EvaporationProcessesHandler;
+import vonzeeple.maplesyrup.client.particle.ParticleSap;
+import vonzeeple.maplesyrup.client.particle.ParticleSteam;
 import vonzeeple.maplesyrup.fluid.FluidTankEvaporator;
 import vonzeeple.maplesyrup.util.FurnaceAdapter;
 
@@ -105,12 +108,14 @@ public class TileEntityEvaporator extends TileFluidHandler implements ITickable{
 	private void spawnParticles(World worldIn, BlockPos pos, IBlockState state)
     {
        Random rand=new Random();
-     for (int j = 0; j < 2; ++j)
+     for (int j = 0; j < 1; ++j)
      {
          double xpos = (double)pos.getX() + rand.nextDouble();
-         double ypos = (double)pos.getY() + 1.5;
+         double ypos = (double)pos.getY() + 1;
          double zpos = (double)pos.getZ() + rand.nextDouble();
-         worldIn.spawnParticle(EnumParticleTypes.CLOUD, xpos, ypos, zpos, 0.0D, 0.0D, 0.0D, new int[0]);
+         //worldIn.spawnParticle(EnumParticleTypes.CLOUD, xpos, ypos, zpos, 0.0D, 0.0D, 0.0D, new int[0]);
+         ParticleSteam newEffect = new ParticleSteam(worldIn, xpos, ypos, zpos);
+         Minecraft.getMinecraft().effectRenderer.addEffect(newEffect);
      }
     
     }

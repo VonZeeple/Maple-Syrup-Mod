@@ -2,9 +2,7 @@ package vonzeeple.maplesyrup.api;
 
 import java.util.HashMap;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import vonzeeple.maplesyrup.util.Logger;
 

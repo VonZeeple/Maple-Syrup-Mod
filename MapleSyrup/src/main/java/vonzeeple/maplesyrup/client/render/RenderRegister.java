@@ -8,13 +8,16 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import vonzeeple.maplesyrup.MapleSyrup;
 import vonzeeple.maplesyrup.common.Content;
 import vonzeeple.maplesyrup.tileentity.TESREvaporator;
+import vonzeeple.maplesyrup.tileentity.TESRTreeTap;
 import vonzeeple.maplesyrup.tileentity.TileEntityEvaporator;
+import vonzeeple.maplesyrup.tileentity.TileEntityTreeTap;
 
 public class RenderRegister {
 	
 	public static void tileEntitySpecialRendererRegister(){
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEvaporator.class, new TESREvaporator());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTreeTap.class, new TESRTreeTap());
 	}
 	
 	public static void itemBlockRendering(){	
@@ -53,7 +56,30 @@ public class RenderRegister {
                 return new ModelResourceLocation(MapleSyrup.MODID.toLowerCase() + ":fluids", "maple_sap_fluid");
             }
         });
-        
+        ModelLoader.setCustomStateMapper(Content.blockFluidBirchSap, new StateMapperBase()
+        {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
+            {
+                return new ModelResourceLocation(MapleSyrup.MODID.toLowerCase() + ":fluids", "birch_sap_fluid");
+            }
+        });
+        ModelLoader.setCustomStateMapper(Content.blockFluidBirchSyrup, new StateMapperBase()
+        {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
+            {
+                return new ModelResourceLocation(MapleSyrup.MODID.toLowerCase() + ":fluids", "birch_syrup_fluid");
+            }
+        });
+        ModelLoader.setCustomStateMapper(Content.blockFluidHeveaSap, new StateMapperBase()
+        {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state)
+            {
+                return new ModelResourceLocation(MapleSyrup.MODID.toLowerCase() + ":fluids", "hevea_sap_fluid");
+            }
+        });       
      // use a custom state mapper which will ignore the DECAY property of leaves
         ModelLoader.setCustomStateMapper(Content.mapleLeaves, new StateMapperBase()
         {

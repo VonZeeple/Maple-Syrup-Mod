@@ -8,7 +8,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.fml.relauncher.Side;
@@ -33,14 +32,26 @@ public class TileEntityTreeTap extends TileFluidHandler implements ITickable{// 
 		return tank.getFluidAmount();
 	}
 	
-	public String getFluid(){
+	public String getFluidName(){
 		if(tank.getFluid()!=null){
 		return tank.getFluid().getLocalizedName();
 		}
 		else{
 		return "null";
 		}
+	}
+	public Fluid getFluid(){
+		if(tank.getFluid()!=null){
+		return tank.getFluid().getFluid();
+		}
+		else{
+		return null;
+		}
+
 	}	
+	
+	
+	
 	public void update(){
 		
 		
